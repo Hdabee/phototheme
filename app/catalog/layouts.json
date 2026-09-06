@@ -1,0 +1,8 @@
+[
+  {"id":"editorial-timeline-four","name":"Éditorial · Timeline 4","photo_count":4,"formats":["square","landscape"],"cells":4,"premium":false},
+  {"id":"story-four","name":"Story · 4 images","photo_count":4,"formats":["square","landscape"],"cells":4,"premium":true},
+  {"id":"atelier-four","name":"Atelier · Récit 4 images","photo_count":4,"formats":["square"],"cells":4,"premium":true},
+  {"id":"atelier-three","name":"Atelier · 3 souvenirs","photo_count":3,"formats":["square"],"cells":3,"premium":true},
+  {"id":"film-four","name":"Film · Contact 4","photo_count":4,"formats":["square","landscape"],"cells":4,"premium":true},
+  {"id":"film-six","name":"Film · Contact 6","photo_count":6,"formats":["square","landscape"],"cells":6,"premium":true}
+]

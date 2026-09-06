@@ -1,0 +1,27 @@
+# Environnement Python et caches
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# Éditeur
+.vscode/
+
+# Données locales, imports et sorties générées
+data/
+uploads/
+output/
+generated/
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# Secrets et environnement local
+.env
+.env.*
+
+# Scripts ponctuels de réparation / diagnostic
+fix_*.py
+diagnose_*.py
+install_*.py

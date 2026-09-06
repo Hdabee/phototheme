@@ -1,0 +1,42 @@
+[
+  {
+    "id":"portrait-timeline-editorial",
+    "name":"Portrait Timeline Editorial",
+    "description":"Une chronologie élégante : trois archives alignées et un portrait contemporain en point d'arrivée.",
+    "category":"editorial-quality",
+    "composition":"portrait_timeline_editorial",
+    "preferred_layouts":["editorial-timeline-four"],
+    "background":"#F2EFE8",
+    "premium":false
+  },
+  {
+    "id":"editorial-night",
+    "name":"Editorial Night",
+    "description":"La variante sombre : graphite, images sobres et titrage de magazine.",
+    "category":"editorial-quality",
+    "composition":"portrait_timeline_night",
+    "preferred_layouts":["editorial-timeline-four"],
+    "background":"#20201E",
+    "premium":true
+  },
+  {
+    "id":"archive-vivante",
+    "name":"Archive Vivante",
+    "description":"Une histoire en images : souvenirs et point d'arrivée contemporain.",
+    "category":"art-direction",
+    "composition":"archive_story",
+    "preferred_layouts":["story-four"],
+    "background":"#EDE4D4",
+    "premium":true
+  },
+  {
+    "id":"island-poster",
+    "name":"Island Poster",
+    "description":"Une affiche de voyage rétro avec soleil graphique, photo héro et tickets.",
+    "category":"atelier",
+    "composition":"tropical_poster",
+    "preferred_layouts":["atelier-four","atelier-three"],
+    "background":"#177B8D",
+    "premium":true
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "theme-birthday-pastel",
+    "intent": "theme_recommendation",
+    "input": {
+      "photo_count": 4,
+      "target_format": "square",
+      "occasion": "anniversaire",
+      "style_hint": "pastel",
+      "locale": "fr-FR"
+    },
+    "expected_theme_id": "birthday-pastel"
+  },
+  {
+    "id": "theme-travel-postcard",
+    "intent": "theme_recommendation",
+    "input": {
+      "photo_count": 3,
+      "target_format": "story",
+      "occasion": "travel",
+      "style_hint": "postcard warm",
+      "locale": "fr-FR"
+    },
+    "expected_theme_id": "travel-postcard"
+  },
+  {
+    "id": "layout-quad",
+    "intent": "layout_recommendation",
+    "input": {
+      "photo_count": 4,
+      "target_format": "square",
+      "occasion": "general"
+    },
+    "expected_layout_id": "quad-classic"
+  }
+]
