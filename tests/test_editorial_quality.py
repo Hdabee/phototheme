@@ -16,3 +16,10 @@ def test_editorial_timeline_renders_four_photos(tmp_path):
     render_collage(states,layout,theme,output,size=1080,story=story)
     assert output.exists()
     assert Image.open(output).size==(1080,1080)
+
+from app.renderer.image_ops import fit_cover
+from app.renderer.art_direction import editorial_quality
+
+
+def test_editorial_quality_uses_shared_fit_cover():
+    assert editorial_quality.fit_cover is fit_cover

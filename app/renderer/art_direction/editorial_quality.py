@@ -1,7 +1,7 @@
 from app.renderer.art_direction.shapes import safe_rectangle
 from PIL import Image, ImageDraw, ImageEnhance, ImageFont
 from app.renderer.art_direction.shapes import rounded_mask, paste_masked
-
+from app.renderer.image_ops import fit_cover
 
 def load_font(size, bold=False, serif=False):
     candidates = []
@@ -20,90 +20,6 @@ def load_font(size, bold=False, serif=False):
 
 from PIL import Image
 
-
-def safe_cover(image, width, height, fill="#D9D2C6"):
-    width = max(1, int(width))
-    height = max(1, int(height))
-
-    if image is None or image.width < 1 or image.height < 1:
-        return Image.new("RGB", (width, height), fill)
-
-    source = image.convert("RGB")
-    source_ratio = source.width / source.height
-    target_ratio = width / height
-
-    if source_ratio >= target_ratio:
-        resized_height = height
-        resized_width = max(width, round(height * source_ratio))
-    else:
-        resized_width = width
-        resized_height = max(height, round(width / source_ratio))
-
-    source = source.resize(
-        (max(1, resized_width), max(1, resized_height)),
-        Image.Resampling.LANCZOS,
-    )
-
-    left = max(0, (source.width - width) // 2)
-    top = max(0, (source.height - height) // 2)
-    right = min(source.width, left + width)
-    bottom = min(source.height, top + height)
-
-    if right <= left or bottom <= top:
-        return Image.new("RGB", (width, height), fill)
-
-    cropped = source.crop((left, top, right, bottom))
-
-    if cropped.size == (width, height):
-        return cropped
-
-    result = Image.new("RGB", (width, height), fill)
-    result.paste(
-        cropped,
-        (
-            max(0, (width - cropped.width) // 2),
-            max(0, (height - cropped.height) // 2),
-        ),
-    )
-    return result
-
-
-def safe_cover(image, width, height, fill="#D9D2C6"):
-    width = max(1, int(width))
-    height = max(1, int(height))
-    if image is None or image.width < 1 or image.height < 1:
-        return Image.new("RGB", (width, height), fill)
-
-    source = image.convert("RGB")
-    source_ratio = source.width / source.height
-    target_ratio = width / height
-    if source_ratio >= target_ratio:
-        resized_width = max(width, round(height * source_ratio))
-        resized_height = height
-    else:
-        resized_width = width
-        resized_height = max(height, round(width / source_ratio))
-
-    source = source.resize((max(1, resized_width), max(1, resized_height)), Image.Resampling.LANCZOS)
-    left = max(0, (source.width - width) // 2)
-    top = max(0, (source.height - height) // 2)
-    right = min(source.width, left + width)
-    bottom = min(source.height, top + height)
-
-    if right <= left or bottom <= top:
-        return Image.new("RGB", (width, height), fill)
-
-    cropped = source.crop((left, top, right, bottom))
-    if cropped.size == (width, height):
-        return cropped
-
-    result = Image.new("RGB", (width, height), fill)
-    result.paste(cropped, ((width - cropped.width) // 2, (height - cropped.height) // 2))
-    return result
-
-
-def fit_cover(image, width, height):
-    return safe_cover(image, width, height)
 
 def treatment(image, is_archive, dark=False):
     if is_archive:
