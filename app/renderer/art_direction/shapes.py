@@ -8,6 +8,17 @@ def safe_box(x0, y0, x1, y1):
     return left, top, right, bottom
 
 
+
+def safe_line(draw, xy, **kwargs):
+    """Draw a line with rounded integer endpoints while retaining its direction."""
+    if len(xy) != 4:
+        raise ValueError("safe_line attend exactement quatre coordonnees.")
+    x0, y0, x1, y1 = xy
+    return draw.line(
+        (int(round(x0)), int(round(y0)), int(round(x1)), int(round(y1))),
+        **kwargs,
+    )
+
 def safe_ellipse(draw, xy, **kwargs):
     return draw.ellipse(safe_box(*xy), **kwargs)
 
