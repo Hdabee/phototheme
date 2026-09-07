@@ -4,6 +4,8 @@ from app.editor.photo_state import PhotoEditState
 from app.editor.photo_transformer import transform_photo
 from app.renderer.layout_geometry import cells_for
 from app.renderer.art_direction.atelier import render_atelier
+from app.renderer.art_direction.garden import render_garden
+from app.renderer.art_direction.life_chronicle import render_life_chronicle
 from app.renderer.art_direction.editorial_quality import render_editorial_night, render_portrait_timeline_editorial
 from app.renderer.art_direction.themes import background, overlays, stylize
 
@@ -132,6 +134,10 @@ def render_collage(states, layout, theme, output: Path, size: int = 1080, story=
         render_editorial_night(canvas, rendered, story)
     elif theme_id in {"reconstructed-portrait", "island-poster"}:
         render_atelier(canvas, theme_id, rendered, story)
+    elif theme_id == "jardin-ete":
+        render_garden(canvas, rendered, story)
+    elif theme_id == "chronique-de-vie":
+        render_life_chronicle(canvas, rendered, story)
     else:
         background(canvas, theme_id)
         cells = cells_for(layout["id"], size, 16)
