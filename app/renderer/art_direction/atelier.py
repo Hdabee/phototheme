@@ -1,17 +1,18 @@
-from app.renderer.art_direction.shapes import safe_ellipse, safe_rectangle, safe_rounded_rectangle
 from PIL import Image, ImageDraw, ImageEnhance
+
 from app.renderer.art_direction.layers import font, paper, shadow_layer
-from app.renderer.art_direction.shapes import draw_leaf, draw_sun, ellipse_mask, paste_masked, rounded_mask, ticket_mask
-
-
-def fit_cover(image, width, height):
-    ratio = image.width / image.height
-    target = width / height
-    new_width, new_height = (round(height * ratio), height) if ratio > target else (width, round(width / ratio))
-    image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
-    left, top = (new_width - width) // 2, (new_height - height) // 2
-    return image.crop((left, top, left + width, top + height))
-
+from app.renderer.art_direction.shapes import (
+    draw_leaf,
+    draw_sun,
+    ellipse_mask,
+    paste_masked,
+    rounded_mask,
+    safe_ellipse,
+    safe_rectangle,
+    safe_rounded_rectangle,
+    ticket_mask,
+)
+from app.renderer.image_ops import fit_cover
 
 def prepared(image, theme_id):
     if theme_id == "reconstructed-portrait":
