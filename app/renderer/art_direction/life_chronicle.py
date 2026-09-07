@@ -1,7 +1,11 @@
 from PIL import Image, ImageDraw, ImageEnhance, ImageFont
 
-from app.renderer.art_direction.shapes import safe_ellipse, safe_rectangle, safe_polygon
-
+from app.renderer.art_direction.shapes import (
+    safe_ellipse,
+    safe_rectangle,
+    safe_polygon,
+)
+from app.renderer.image_ops import fit_cover
 
 PAPER = (239, 233, 222, 255)
 INK = (39, 37, 33, 255)
@@ -26,23 +30,6 @@ def load_font(size, bold=False, serif=False):
         except OSError:
             pass
     return ImageFont.load_default()
-
-
-def fit_cover(image, width, height, fill="#D9D2C6"):
-    width, height = max(1, int(width)), max(1, int(height))
-    if image is None or image.width < 1 or image.height < 1:
-        return Image.new("RGB", (width, height), fill)
-    source = image.convert("RGB")
-    source_ratio = source.width / source.height
-    target_ratio = width / height
-    if source_ratio >= target_ratio:
-        resized_width, resized_height = max(width, round(height * source_ratio)), height
-    else:
-        resized_width, resized_height = width, max(height, round(width / source_ratio))
-    source = source.resize((resized_width, resized_height), Image.Resampling.LANCZOS)
-    left = max(0, (resized_width - width) // 2)
-    top = max(0, (resized_height - height) // 2)
-    return source.crop((left, top, left + width, top + height))
 
 
 def archive_treatment(image):
@@ -156,3 +143,4 @@ def render_life_chronicle(canvas, photos, story):
     safe_rectangle(draw, (margin, 963, width - margin, 964), fill=MUTED)
     footer = "UNE VIE RACONTÉE EN QUATRE CHAPITRES"
     draw.text((margin, 982), footer, font=load_font(10, bold=True), fill=MUTED)
+

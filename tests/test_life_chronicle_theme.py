@@ -29,3 +29,10 @@ def test_life_chronicle_uses_last_photo_when_hero_is_not_set():
     render_life_chronicle(canvas, build_photos(4), ProjectStoryState(hero_photo_id=""))
     assert canvas.size == (1080, 1080)
     assert canvas.getbbox() is not None
+
+from app.renderer.image_ops import fit_cover
+from app.renderer.art_direction import life_chronicle
+
+
+def test_life_chronicle_uses_shared_fit_cover():
+    assert life_chronicle.fit_cover is fit_cover
