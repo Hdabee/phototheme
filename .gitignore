@@ -25,3 +25,7 @@ generated/
 fix_*.py
 diagnose_*.py
 install_*.py
+
+# Local architecture audits
+architecture_audit.txt
+factory_foundation_audit.txt
