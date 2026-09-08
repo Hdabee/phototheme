@@ -11,6 +11,8 @@ from app.renderer.art_direction.shapes import (
     ticket_mask,
 )
 
+from app.renderer.image_ops import fit_cover
+
 
 BACKGROUND = (76, 106, 88, 255)
 CREAM = (245, 232, 201, 255)
@@ -20,25 +22,6 @@ TERRACOTTA = (184, 86, 62, 255)
 FOREST = (37, 68, 52, 220)
 SHADOW = (39, 53, 44, 255)
 
-
-def fit_cover(image, width, height):
-    width = max(1, int(width))
-    height = max(1, int(height))
-    source = image.convert("RGB")
-    source_ratio = source.width / source.height
-    target_ratio = width / height
-
-    if source_ratio >= target_ratio:
-        resized_width = max(width, round(height * source_ratio))
-        resized_height = height
-    else:
-        resized_width = width
-        resized_height = max(height, round(width / source_ratio))
-
-    source = source.resize((resized_width, resized_height), Image.Resampling.LANCZOS)
-    left = max(0, (resized_width - width) // 2)
-    top = max(0, (resized_height - height) // 2)
-    return source.crop((left, top, left + width, top + height))
 
 
 def prepared(image):

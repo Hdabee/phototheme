@@ -29,3 +29,6 @@ install_*.py
 # Local architecture audits
 architecture_audit.txt
 factory_foundation_audit.txt
+
+# Local primitive-consolidation audit
+primitives_consolidation_audit.txt
